@@ -1,4 +1,4 @@
-export const events = [
+const events = [
     {
         slug: "react-conf-2024",
         image: "/images/event1.png",
@@ -96,3 +96,5 @@ export const events = [
         time: "9:00 AM - 5:00 PM",
     },
 ];
+
+export default events;
