@@ -60,6 +60,7 @@ async function connectDB(): Promise<typeof mongoose> {
         throw error;
     }
 
+    console.log(cached.conn)
     return cached.conn;
 }
 
