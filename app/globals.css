@@ -248,7 +248,7 @@
     }
 
     .pill {
-        @apply bg-dark-100 text-light-100 text-xs rounded-[6px] px-5 py-2;
+        @apply bg-dark-100 text-light-100 text-base rounded-[6px] px-5 py-2;
     }
 
     #book-event {

@@ -1,7 +1,8 @@
 import ExploreBtn from "@/components/ExploreBtn";
 import EventsGrid from "@/components/EventsGrid";
 
-const Page = () => {
+const Page =  () => {
+
     return(
          <section>
              <h1 className="text-center">
