@@ -1,7 +1,6 @@
 import EventCard from "./EventCard";
 import {IEvent} from "@/database";
 
-
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const EventsGrid = async () => {
@@ -9,6 +8,7 @@ const EventsGrid = async () => {
     const response = await fetch(`${BASE_URL}/api/events`, {
         method: "GET",
         headers: {
+
             "Content-Type": "application/json",
             "Accept": "application/json"
         }

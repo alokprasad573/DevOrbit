@@ -1,7 +1,6 @@
 import {notFound} from "next/navigation";
 import Image from "next/image";
 import Booking from "@/components/Booking";
-import {IEvent} from "@/database";
 import getSimilarEventBySlug from "@/lib/actions/event.actions";
 import EventCard from "@/components/EventCard";
 
@@ -55,7 +54,7 @@ const EventDetailsPage = async ({ params } : { params: Promise<{slug: string}>})
     const { event } = await request.json();
     if (!event) return notFound();
 
-    const { title, description, overview, image, venue, location, date, time, mode, audience, agenda, organizer, tags} = event;
+    const {id, title, description, overview, image, venue, location, date, time, mode, audience, agenda, organizer, tags} = event;
     const address = `${venue}, ${location}`;
 
     const bookings = 10;
@@ -104,7 +103,7 @@ const EventDetailsPage = async ({ params } : { params: Promise<{slug: string}>})
                         ) : (
                             <p className="text-sm">Be the first to book your spot</p>
                         )}
-                        <Booking/>
+                        <Booking eventId={event._id} slug={slug}  />
                     </div>
                 </aside>
             </div>
@@ -114,7 +113,7 @@ const EventDetailsPage = async ({ params } : { params: Promise<{slug: string}>})
                     <h2>Similar Events</h2>
                     <div className="events">
                         {similarEvents.map((similarEvent) => (
-                            <EventCard key={similarEvent._id} {...similarEvent} />
+                            <EventCard key={similarEvent.title} {...similarEvent} />
                         ))}
                     </div>
                 </div>
