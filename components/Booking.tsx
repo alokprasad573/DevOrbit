@@ -1,3 +1,4 @@
+'use client';
 import {FormEvent, useState} from "react";
 
 const Booking = () => {
