@@ -1,37 +1,25 @@
-const createBooking = async ({
-    eventId,
-    slug,
-    email,
-}: {
+'use server';
+
+import Booking from '@/database/booking.model';
+import connectDB from "@/lib/mongodb";
+
+interface InterFaceBooking {
     eventId: string;
     slug: string;
     email: string;
-}) => {
+}
+
+const createBooking = async ({ eventId, slug, email } : InterFaceBooking) => {
     try {
-        const response = await fetch("/api/bookings", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ eventId, slug, email }),
-        });
+        await connectDB();
+        const booking = await Booking.create({ eventId, slug, email });
 
-        const data = await response.json();
-
-        if (!response.ok) {
-            return {
-                success: false,
-                error:
-                    data?.message ??
-                    "Unable to create booking. Please try again later.",
-            };
-        }
-
-        return { success: true, booking: data.booking };
-    } catch (error) {
-        console.error("Error creating booking event", error);
-        return { success: false, error };
+        return { success: true, booking };
+    } catch (e) {
+        console.error("", e);
+        return { success: false, error: e };
     }
-};
+}
+
 
 export default createBooking;
