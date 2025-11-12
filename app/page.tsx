@@ -1,6 +1,8 @@
 import ExploreBtn from "@/components/ExploreBtn";
 import EventsGrid from "@/components/EventsGrid";
+import dotenv from "dotenv";
 
+dotenv.config();
 const Page =  () => {
 
     return(
